@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+     
+           <record id="sale_subscription_view_form_custom1" model="ir.ui.view">
+            <field name="name">sale.subscription.form.view1</field>
+            <field name="model">sale.subscription</field>
+            <field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
+            <field name="arch" type="xml">
+             
+                <xpath expr="//form/sheet/group[@name = 'main']/group/field[@name = 'to_renew']" position="after">
+                    <field name="customer_ref_no"/> 
+                    <field name="customer_po_no"/> 
+                </xpath>
+                
+                <xpath expr="//form/sheet/group[@name = 'main']/group/field[@name ='close_reason_id']" position="after">
+                    <field name="subscribed_date"/>
+                </xpath>
+            </field>
+          </record>  
+          
+          <record id="sale_order_view_form_custom1" model="ir.ui.view">
+            <field name="name">sale.order.view1</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+             
+                <xpath expr="//form/sheet/group/group/field[@name = 'payment_term_id']" position="after">
+                    <field name="customer_ref_no"/> 
+                    <field name="customer_po_no"/> 
+                </xpath>
+                
+                
+                
+         
+            </field>
+          </record>  
+          
+          
+          
+          
+          
+          <record id="sale_order_view123" model="ir.ui.view">
+            <field name="name">sale.order.view123</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+             
+                <xpath expr="//form/sheet/group/group/field[@name = 'partner_id']" position="after">
+                    <field name="customer_ref_no"/> 
+                    <field name="customer_po_no"/> 
+                </xpath>
+                
+                
+                <xpath expr="//form/sheet/group/group/field[@name = 'payment_term_id']" position="after">
+                        <field name="subscribe_dt"/>
+                </xpath>
+            </field>
+          </record>  
+        
+        
+    </data>
+</odoo>    
+    
