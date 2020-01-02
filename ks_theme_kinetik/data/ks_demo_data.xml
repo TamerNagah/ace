@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--     <data noupdate="1">-->
+<!--        <record model="ks_theme_kinetik.ks_deal_of_the_day" id="ks_deal_of_the_days">-->
+<!--            <field name="name">Offer Timer</field>-->
+<!--        </record>-->
+<!--    </data>-->
+</odoo>
