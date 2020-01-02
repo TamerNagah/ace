@@ -1,0 +1,47 @@
+<odoo>
+    <!--Predefined tags-->
+    <data noupdate="1">
+        <record model="ks_theme.tags" id="ks_products_tags_new_arrival">
+            <field name="name">New Arrivals</field>
+        </record>
+        <record model="ks_theme.tags" id="ks_products_tags_trendy">
+            <field name="name">Top Trendings</field>
+        </record>
+        <record model="ks_theme.tags" id="ks_products_tags_Most_popular">
+            <field name="name">Most Popular</field>
+        </record>
+        <record model="ks_theme.tags" id="ks_products_tags_Classics">
+            <field name="name">Classics</field>
+        </record>
+    </data>
+
+    <data noupdate="1">
+        <record model="website.menu" id="menu_home_options">
+            <field name="name">Home Options</field>
+        </record>
+        <record model="website.menu" id="menu_home_option_one">
+            <field name="name">Corporate</field>
+            <field name="url">/corporate</field>
+            <field name="parent_id" ref="ks_theme_base.menu_home_options"/>
+        </record>
+<!--        <record model="website.menu" id="menu_home_option_two">-->
+<!--            <field name="name">Our Beauty</field>-->
+<!--            <field name="url">/beauty</field>-->
+<!--            <field name="parent_id" ref="ks_theme_base.menu_home_options"/>-->
+<!--        </record>-->
+        <record model="website.menu" id="menu_home_option_three">
+            <field name="name">Fitness</field>
+            <field name="url">/fitness</field>
+            <field name="parent_id" ref="ks_theme_base.menu_home_options"/>
+        </record>
+<!--        <record model="website.menu" id="menu_home_option_four">-->
+<!--            <field name="name">Medical</field>-->
+<!--            <field name="url">/medical</field>-->
+<!--            <field name="parent_id" ref="ks_theme_base.menu_home_options"/>-->
+<!--        </record>-->
+        <record model="website.menu" id="menu_home_options">
+            <field name="child_id" eval="[(6,0,[ ref('ks_theme_base.menu_home_option_one'),
+                    ref('ks_theme_base.menu_home_option_three')])]"/>
+        </record>
+    </data>
+</odoo>
