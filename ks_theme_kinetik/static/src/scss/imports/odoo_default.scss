@@ -1,0 +1,19 @@
+.navbar-expand-md {
+
+    #top_menu_collapse {
+        .nav-item.dropdown {
+            position: relative !important;
+        }
+
+        #my_wish {
+           margin: 8px 20px 0 0px !important;
+        }
+    }
+
+}
+
+.s_text_block {
+    span[data-oe-field="email"] {
+        word-break: break-all;
+    }
+}
