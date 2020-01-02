@@ -1,0 +1,103 @@
+.o_rtl{
+    #products_grid_before {
+        overflow: hidden;
+    }
+
+    .img-slider {
+        .carousel-control-prev-icon,
+        .carousel-control-next {
+            span {
+                transform: rotate(180deg);
+            }
+        }
+    }
+    .ks_product_slider_multiple {
+        .owl-stage-outer {
+            direction: ltr;
+        }
+    }
+    .ks-filter-outer{
+        overflow: hidden;
+    }
+    .owl-carousel.owl-rtl{
+        direction: ltr  !important;
+    }
+    .carousel-content {
+        margin-left: auto;
+    }
+
+    .santa-flying {
+        animation-name: flywithmeAlternate;
+    }
+
+    .ks-xmas-moon {
+        animation-delay: 0s;
+        opacity: 1;
+    }
+
+    .order-change-on-rtl {
+        order: -1;
+    }
+
+    .ks-ny-hero-text-main {
+        direction: rtl;
+    }
+
+    .ks-kinetik-slider {
+
+        .carousel-indicators {
+            left: 0;
+            right: auto;
+            margin-left: 100px;
+        }
+
+        .ks-kinetik-blobs {
+            &-left {
+                right: 0;
+                left: auto;
+            }
+
+            &-right {
+                left: 0;
+                right: auto;
+            }
+        }
+
+        .ks-banner-txt2 {
+            text-align: right;
+        }
+
+        .carousel-item {
+            direction: rtl;
+        }
+    }
+}
+
+.o_rtl ~  .popover.mycart-popover{
+    left: inherit !important;
+    direction: ltr;
+
+    &.bs-popover-auto[x-placement^="right"] {
+        margin-right: 10px;
+    }
+
+    &.bs-popover-auto[x-placement^="right"] > .arrow {
+        right: -7px;
+        left: inherit;
+        transform: rotate(180deg);
+    }
+}
+
+#products_grid.o_wsale_layout_list .oe_product_cart .o_wsale_product_btn .btn + .btn {
+    margin-top: 0;
+}
+#products_grid .ks-product-list-view .ks-product-list-mode .o_wsale_product_btn{
+    justify-content: space-around;
+    width: 100%;
+}
+
+
+
+
+
+

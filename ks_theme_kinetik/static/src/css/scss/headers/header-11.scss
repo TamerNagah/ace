@@ -1,0 +1,256 @@
+// Header  transparent (Header - 11)
+body.ks_transparent_header{
+    .navbar-expand-lg .container{
+        position: static;
+    }
+    @media(min-width: 900px){
+        #top_menu_collapse .nav-item .dropdown-menu:not(.js_usermenu), #top_menu_collapse_clone .nav-item .dropdown-menu:not(.js_usermenu){
+            max-width: 1400px;
+            margin: 0 auto;
+            left: 0px !important;
+            right: 0px ;
+        }
+    }
+    @media(max-width: 1280px){
+        .ks-header-6-items .ks-header-6-wish{
+                margin: 0 20px;
+        }
+        .o_affix_enabled #my_cart_2{
+            margin-left: 0;
+        }
+    }
+    #top_menu > li > a,
+    #my_cart_2 .nav-link,
+    #my_wish .nav-link,
+    .ks-header-2-main .navbar-toggler,
+    .remove_after_content .nav-link,
+    .ks-header-6 .ks-search-trigger{
+        color: #fff;
+    }
+    .ks-header-2-main #top_menu > li > a span:after, .ks-header-5 #top_menu > li > a span:after{
+        border-color: #fff;
+    }
+    .navbar-brand img{
+        filter: invert(1);
+    }
+        .ks-header-offer-container{
+            display: none;
+        }
+        .ks-header-11.o_affix_enabled {
+            position: absolute;
+            width: 100%;
+            padding-left: 5%;
+            padding-right: 5%;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+
+            @media(max-width: 1280px){
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+
+        .o_header_affix{
+            background: #fff;
+        }
+
+        .affixed {
+            max-width: 100% !important;
+            box-shadow: 0px 4px 8px #b1afaf;
+            justify-content: center;
+            width: 100%;
+            padding-top: 5px;
+            padding-bottom: 5px;
+
+            .ks-header-2-main {
+                background: transparent;
+            }
+        }
+
+        .ks-header-6 {
+            .ks-search-trigger{
+                height: 45px;
+                background: transparent;
+                width: 35px;
+                text-align: center;
+                line-height: 45px;
+                &.js-search-hide{
+                    @media (max-width: 990px){
+                        background: #fff;
+                    }
+                    top: 0px;
+                    color: $black;
+                }
+            }
+        }
+
+    @media (max-width: 990px){
+        #wrapwrap .o_header_affix.affixed{
+            display: flex;
+        }
+        .navbar-brand.logo{
+            margin: 0px;
+        }
+        .ks-header-6-logo{
+            margin-right: auto;
+            max-width: 180px;
+            padding: 0px;
+            @media(max-width: 375px){
+                max-width: 120px;
+            }
+        }
+        .ks-header-6-main{
+            max-width: 45px;
+            order: 2;
+            text-align: center;
+        }
+        .ks-header-6 .ks-header-6-items{
+            background: transparent;
+            max-width: 150px;
+            @media(max-width: 375px){
+                max-width: 120px;
+            }
+            order: 1;
+            padding: 0px;
+
+            .remove_after_content{
+                margin-right: 0px;
+                max-width: 30px;
+
+                .ks_landing_menu{
+                    .dropdown-toggle{
+
+                        b{
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+        .ks-header-6.o_affix_enabled {
+            border-color: transparent;
+        }
+
+        .ks-header-6.affixed .ks-header-6-logo{
+           display: inline-block;
+        }
+        .navbar-brand img{
+            max-height: 50px;
+            padding: 5px 0px;
+            @media(max-width: 575px){
+                max-height: 45px;
+            }
+        }
+        .ks-header-6-items .ks-header-6-wish {
+            margin: 0 5px;
+        }
+        #my_cart_2{
+            margin-left: 0px;
+        }
+    }
+    // max-width: 990px / end
+
+    @media(max-width: 375px){
+        .remove_after_content{
+            display: none;
+        }
+    }
+
+    .o_editable[data-oe-type]{
+        min-height: 0px;
+    }
+    @media(max-width: 990px){
+        .ks-header-6-search{
+            padding: 20px;
+            box-shadow: 1px 3px 10px #8a8a8a;
+
+            &.js-search-show{
+                top: 45px;
+                @media(min-width: 991px){
+                    top: 55px;
+                }
+            }
+
+            form{
+                max-width: 100%;
+                margin-right: auto;
+                margin-left: 0px;
+                .easy-autocomplete{
+                        width: 100% !important;
+
+                        input.search-query{
+                            width: 100%;
+                        }
+                }
+            }
+        }
+        .ks-header-6-search.search_container .easy-autocomplete{
+            width: 100% !important;
+        }
+    }
+    .ks-header-11 {
+    z-index: 1000;
+
+    @media (max-width: 990px) {
+        .ks_vertical_tabs .tab-content .tab-pane .submenu_inside li.mb-2 {
+            display: block;
+        }
+    }
+    @media (max-width: 992px) {
+        .navbar-collapse {
+            #top_menu {
+                background: #141f1e !important;
+            }
+
+            .ks_text_line,
+            .theme__heading,
+            .fp__img,
+            .nav-link,
+            .mb-2 a,
+            .w-100.text-center,
+            .submenu_inside > a {
+                color: $white !important;
+            }
+        }
+    }
+
+
+    &.affix {
+        background: #141f1e !important;
+        box-shadow: none !important;
+
+        .navbar-collapse {
+            border: none !important;
+        }
+
+        .ks-header-6-logo {
+            margin-left: auto;
+        }
+    }
+
+    ~ main {
+        .ks-furniture-hero {
+            .carousel-indicators {
+                justify-content: flex-end;
+            }
+            @media (min-width: 991px) {
+                margin-top: 0px !important;
+            }
+
+            @media (max-width: 540px) {
+                .ks-banner-txt {
+                    top: 40px !important;
+                }
+            }
+        }
+    }
+
+    .ks-custom-login b {
+      color: white;
+    }
+}
+}
+

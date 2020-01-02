@@ -1,0 +1,19 @@
+.modal-dialog.size_chart_preview_modal{
+    width: 90%;
+    max-width: 1280px;
+}
+.modal-dialog.size_chart_preview_modal .modal-body {
+    position: relative;
+    padding: 15px;
+    height: calc(100vh - 170px);
+    box-sizing: border-box;
+}
+.modal-dialog.size_chart_preview_modal .modal-body  iframe{
+   border: none;
+}
+.modal-dialog.size_chart_preview_modal .modal-body img{
+   max-width: 100%;
+}
+.mr-8{
+   margin-right: 2%;
+}
