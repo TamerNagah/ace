@@ -1,0 +1,1865 @@
+// for pricing
+.ks-gym {
+    &-pricing {
+        .ks-pricing-img-individual {
+            width: 60%;
+            background-image: url('/ks_theme_kinetik/static/src/landing-pages-images/gym/plan-1.svg');
+        }
+
+        .ks-pricing-img-team {
+            width: 60%;
+            background-image: url('/ks_theme_kinetik/static/src/landing-pages-images/gym/plan-2.svg');
+        }
+
+        .ks-pricing-img-enterprise {
+            width: 60%;
+            background-image: url('/ks_theme_kinetik/static/src/landing-pages-images/gym/plan-3.svg');
+        }
+    }
+}
+
+//for books shop
+
+.ks-books-shop {
+    .carousel-content {
+        font {
+            text-shadow: -7px 3px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        h4 {
+           .o_default_snippet_text {
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+           }
+        }
+    }
+
+    .carousel-item.active {
+        .ks-book-txt-sub {
+            animation: bounceInDown 1s ease-in-out forwards;
+        }
+
+        .ks-book-txt-main {
+            animation: bounceInLeft 1.3s ease-in-out  forwards;
+        }
+
+        .ks-book-outer {
+            animation: bounceInUp 1.6s ease-in-out forwards;
+        }
+    }
+}
+
+.ks-blog-books {
+    .box__shadow {
+        box-shadow: none !important;
+    }
+
+    .blog_date {
+        top: 10px;
+        left: 10px;
+        right: auto;
+        bottom: auto;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        text-align: center;
+        padding: 10px;
+        line-height: 1.2;
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.8);
+        z-index: 1;
+    }
+
+    .blog_img {
+        overflow: hidden;
+
+        img {
+            transition: 0.4s ease-in-out;
+        }
+    }
+
+    .btn-blog-2 {
+        padding: 5px;
+        border-bottom: 2px solid;
+        color: #5f5f5f;
+        text-transform: uppercase;
+        transition: 0.2s ease-in-out;
+
+        &:hover {
+            border-bottom: 2px solid transparent;
+            outline: 2px solid;
+        }
+    }
+
+    .blog__card {
+        &:hover {
+            cursor: pointer;
+
+            img {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+.ks-pricing-6 {
+    .ks-pricing-img-box {
+        margin: -24px;
+        margin-bottom: 20px;
+        background-size: cover;
+        height: 180px;
+        position: relative;
+    }
+
+    .ks-pricing-value {
+        width: 90px;
+        height: 90px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        bottom: -45px;
+        margin-left: calc(50% - 45px);
+        transition: 0.2s ease-in-out;
+    }
+
+    .ks-pricing-heading {
+        background: rgba(0, 0, 0, 0.3);
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 40px;
+        transition: 0.2s ease-in-out;
+    }
+
+    .ks-pricing-card-inner {
+        &:hover {
+            color: black;
+
+            &:before {
+                display: none;
+            }
+
+            .ks-pricing-heading {
+                background: rgba(0, 0, 0, 0.15);
+            }
+
+            .ks-pricing-value {
+                color: $primary;
+            }
+
+            .text-muted {
+                color: #6c757d !important;
+            }
+        }
+    }
+}
+
+.ks-quotes-line {
+    font-size: 30px;
+    display: initial;
+
+    .fa {
+        position: absolute;
+        opacity: 0.5;
+    }
+
+    .fa-quote-left {
+        top: 0;
+        left: -40px;
+    }
+
+    .fa-quote-right {
+        bottom: 0;
+        right: -40px;
+    }
+}
+
+.ks-day-quotes {
+    @media (min-width: 1025px) {
+        margin-top: 120px;
+    }
+}
+
+.ks-author {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 20px;
+    opacity: 0.8;
+
+    &-img {
+       margin-top: -120px;
+
+       @media (max-width: 1024px) {
+            margin-top: -25px;
+       }
+
+    }
+}
+
+.ks-btn-white {
+    color: $white;
+    border: 2px solid $white;
+    transition: 0.3s ease-in-out;
+    border-radius: $btn-radius;
+    background: transparent;
+
+    &:hover {
+        color: $white;
+        transform: scale(1.1);
+    }
+}
+
+.mtt-2 {
+    margin-top: 2px;
+}
+
+.ks-shine-effect {
+    @extend %shine-effect;
+}
+
+// for Hotel
+
+.ks-hotel-about-pic2 {
+    max-width: 300px;
+    margin-left: auto;
+    z-index: 1;
+    position: relative;
+    border: 12px solid #fff;
+
+    @media (min-width: 576px) {
+        margin-top: -20%;
+    }
+}
+
+.ks-hotel-about {
+    line-height: 1.5;
+}
+
+.bg-light-gray {
+    background-color: #f4f4f4;
+}
+
+.ks-heading-large {
+    font-size: 40px;
+}
+
+.ks-hotel-room {
+    overflow: hidden;
+    cursor: pointer;
+
+    &-overlay {
+        background-image: linear-gradient(360deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 74%);
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        padding: 20px;
+        color: $white;
+        transition: 0.5s ease-in-out;
+    }
+
+    img {
+        transition: 1s ease-in-out;
+    }
+
+    &:hover {
+        img {
+            transform: scale(1.1);
+        }
+
+        .ks-hotel-room {
+            background-image: linear-gradient(360deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 0%);
+        }
+    }
+
+}
+
+.tag-primary {
+    background: $primary;
+    color: $theme-text-color;
+    padding: 5px;
+}
+
+.ks-hotel-parallax {
+    &.ks-banner-left-text .ks-text-pannel-left .heading-text-info {
+        font-size: 70px;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        text-transform: inherit;
+        color: #fff;
+
+        @media (max-width: 575px) {
+          font-size: 40px;
+        }
+    }
+}
+
+.bg-primary {
+    background: $primary !important;
+    color: $theme-text-color !important;
+}
+
+.ks-hotel-menu {
+    background: #e2e2e2;
+
+    nav {
+        border-bottom: 1px solid #000;
+    }
+    .nav-link {
+        color: rgba(0,0,0,0.6);
+        font-size: 20px;
+        font-weight: 600;
+        padding: 0;
+
+        span {
+             padding: 8px 24px;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: #000;
+            border-radius: 4px;
+            transition: 0.3s ease-in-out;
+        }
+
+        &.active,
+        &:hover {
+            background: transparent;
+            border: none;
+            color: #000;
+            position: relative;
+
+            &:after {
+                width: 100%;
+            }
+        }
+    }
+
+    .nav-tabs {
+       padding: 0 20px 5px;
+       border-width: 2px;
+       justify-content: center;
+    }
+
+    .fade {
+        transition-duration: 0.4s;
+    }
+}
+
+.ks-food-dining-img {
+    border-radius: 50%;
+
+    img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+}
+
+.ks-food-bredcrumb {
+    letter-spacing: 1px;
+}
+
+.ks-hotel-dining-slides.d-lg-block {
+    .carousel,
+    .carousel-inner,
+    .carousel-item,
+    .carousel-item div{
+       height: 100% !important;
+    }
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.custom-theme-header {
+    img {
+        max-height: 60px;
+    }
+}
+
+.ks-hotel-img {
+    max-width: 150px;
+}
+
+.ks-hotel-gallery {
+    .owl-nav {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        margin-top: 0;
+        z-index: -1;
+
+        i {
+            font-size: 100px;
+            color: #868686;
+        }
+
+        button {
+            position: absolute;
+            top: calc(50% - 75px);
+
+            &:hover {
+                background: transparent !important;
+
+                i {
+                    color: #000;
+                }
+            }
+        }
+        .owl-prev {
+            left: -80px;
+        }
+        .owl-next {
+            right: -80px;
+        }
+    }
+}
+
+.ks-show-indicators.carousel-indicators {
+    li {
+        width: 30px;
+        height: 3px;
+    }
+}
+
+.ks-room-info.bg-white .text-muted {
+    color: #6c757d !important;
+}
+
+.ks-hotel-card-effect {
+    overflow: hidden;
+
+    img {
+       transition: 0.6s ease-in-out;
+    }
+
+    &:hover {
+        color: white;
+        cursor: pointer;
+
+        .text-muted {
+            color: white !important;
+        }
+
+        img {
+            box-shadow: 0 0 10px 400px rgb(56, 56, 56);
+        }
+    }
+}
+
+.ks-youtube-content {
+    background: transparent;
+    border-color: transparent;
+    margin-top: -100px;
+
+    .close {
+        opacity: 1;
+    }
+}
+
+.ks-hotel-hero {
+    min-height: 80vh;
+
+    video {
+        @media (max-width: 1024px)  {
+            height: 100%;
+            width: auto;
+        }
+    }
+
+
+    .ks-hotel-hero-heading {
+        animation: slide_left 1s ease-in-out;
+    }
+
+    h1 {
+        opacity: 0;
+        animation: slide_right 1s ease-in-out forwards;
+    }
+
+    .ks-hotel-hero-multi-heading {
+        div {
+            animation: moveupfull 0.6s ease-in-out;
+
+            &:nth-child(1) {
+                animation-delay:1s;
+            }
+            &:nth-child(2) {
+                animation-delay: 1.6s;
+            }
+            &:nth-child(3) {
+                animation-delay: 2.2s;
+            }
+        }
+    }
+
+    .bounce-effect {
+        animation: bounceIn 0.6s ease-in-out 2.8s ;
+    }
+}
+
+.animate-opacity-1,
+.ks-hotel-hero-heading,
+.ks-hotel-hero .bounce-effect,
+.ks-hotel-hero-multi-heading div {
+    opacity: 0;
+    animation-fill-mode: forwards !important;
+}
+
+.youtube-modal-video {
+    iframe {
+        @media (max-width: 575px) {
+            height: auto;
+            width: 400px;
+        }
+
+        @media (max-width: 450px) {
+            width: 350px;
+        }
+
+        @media (max-width: 400px) {
+            width: 300px;
+        }
+
+        @media (max-width: 350px) {
+            height: auto;
+            width: 250px;
+        }
+    }
+}
+
+.ks-food-dining-price {
+    align-self: flex-end;
+    font-size: 24px;
+    font-weight: 600 !important;
+}
+
+//for chritmas
+.ks-hero-bg {
+    background-color: #3f0d12;
+    background-image: linear-gradient(185deg, #6f232b 0%, #a71d31 74%);
+}
+.ks-xmas-bg {
+    background-color: #ff3348;
+    background-image: linear-gradient(185deg, #ff3348 0%, #ca0b27 74%);
+}
+
+.view-height {
+    min-height: 90vh;
+
+    @media (max-width: 1024px) {
+        min-height: 70vh;
+    }
+}
+
+.font-600 {
+    font-weight: 600;
+}
+
+.parallax-trees {
+    bottom: -90px;
+
+    @media (max-width: 330px) {
+        bottom: -100px;
+    }
+}
+
+.ks-white-trees {
+    height: 250px;
+    z-index: 2;
+
+    @media (max-width: 575px) {
+        height: 170px;
+    }
+}
+
+.ks-red-trees {
+    height: 150px;
+    z-index: 1;
+    bottom: 70px;
+
+    @media (max-width: 330px) {
+        bottom: 40px;
+    }
+}
+
+#snow-fall {
+    position:absolute;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.z-index-10 {
+    z-index: 10;
+}
+
+.ks-bell-image {
+    min-width: 100px;
+    max-width: 100px;
+    height: 100px;
+
+    @media (max-width: 575px) {
+        min-width: 60px;
+        max-width: 60px;
+        height: 60px;
+    }
+}
+
+.ks-latto-images {
+    width: 150px;
+}
+
+.btn-red-white {
+    border-radius: 0;
+    color: #ca0b27;
+    background: white;
+    @extend .btn-hover-effect;
+}
+
+.btn-hover-effect {
+    transition: 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.cube {
+    position: absolute;
+    top: 80%;
+    left: 45%;
+    width: 10px;
+    height: 10px;
+    border: solid 1px #e28390;
+    transform-origin: top left;
+    transform: scale(0) rotate(0deg) translate(-50%, -50%);
+    animation: cube 4s ease-in forwards infinite;
+}
+.cube:nth-child(2) {
+    animation-delay: 2s;
+    left: 25%;
+    top: 40%;
+}
+.cube:nth-child(3) {
+    animation-delay: 4s;
+    left: 75%;
+    top: 50%;
+}
+.cube:nth-child(4) {
+    animation-delay: 6s;
+    left: 90%;
+    top: 10%;
+}
+.cube:nth-child(5) {
+    animation-delay: 8s;
+    left: 10%;
+    top: 85%;
+}
+.cube:nth-child(6) {
+    animation-delay: 10s;
+    left: 90%;
+    top: 90%;
+}
+
+@keyframes cube {
+    from {
+        transform: scale(0) rotate(0deg) translate(-50%, -50%);
+        opacity: 1;
+    }
+    to {
+        transform: scale(10) rotate(960deg) translate(-50%, -50%);
+        opacity: 0.5;
+    }
+}
+
+.ks-ev-decorator {
+    min-width: calc(100% + 1px);
+    max-width: calc(100% + 1px);
+    bottom: -1px;
+    left: 0;
+}
+
+.ks-ev-date {
+    width: 100px;
+    height: 100px;
+    margin-top: -70px;
+}
+
+.btn.ks-xmas-bg,
+.btn.ks-xmas-bg-black {
+    border-radius: 0;
+    @extend .btn-hover-effect;
+}
+
+.ks-xmas-bg-black {
+    background-color: #000;
+}
+
+.ks-xmas-client {
+    box-shadow: #dfdfdf -1px 5px 51px;
+
+    &-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    &-quotes {
+        width: 60px;
+        padding: 5px;
+        height: 70px;
+        border-radius: 5px;
+        top: -20px;
+
+        img {
+            margin-top: 5px;
+        }
+    }
+}
+
+.ks-xmas-pricing {
+    &-head {
+        &.head-black {
+            background-color: #000000;
+        }
+    }
+
+    &:hover {
+       .ks-card-wave-layer {
+           &.layer-1 {
+                transform: translate3d(15px, 0, 0);
+           }
+
+           &.layer-2 {
+                transform: translate3d(-15px, 0, 0);
+           }
+
+           &.layer-3 {
+                transform: translate3d(-15px, 0, 0);
+            }
+       }
+    }
+}
+
+.ks-card-wave {
+    position: absolute;
+    bottom: -70px;
+    left: 0;
+    width: 100%;
+    height: 160px;
+
+    &-layer {
+        transition: transform 0.5s;
+    }
+}
+
+.santa-flying {
+    animation: flywithme 4s ease-in-out;
+     margin-top: -100px;
+
+    @media (max-width: 1024px) {
+        margin-top: -50px;
+    }
+
+     @media (max-width: 575px) {
+        margin-top: 15px;
+    }
+}
+
+@keyframes flywithme {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes flywithmeAlternate {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.ks-xmas-moon {
+    width: 400px;
+    top: 230px;
+    opacity: 0;
+
+    animation: moonZoom 2s cubic-bezier(0.175, 0.885, 0.32, 1.275) 3s forwards;
+
+    @media (max-width: 768px) {
+        top: 340px;
+        width: 350px;
+    }
+
+    @media (max-width: 575px) {
+        top: 230px;
+        width: 200px;
+    }
+}
+
+@keyframes moonZoom {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.ks-xmas-pass-info {
+    li {
+        font-size: 20px;
+        border-bottom: 1px solid rgba(204, 204, 204, 0.38);
+        padding: 10px 0;
+        width: 80%;
+        margin: auto;
+    }
+}
+
+.ks-xmas-accordian {
+   .btn-link {
+       color: #d11a1c;
+       font-size: 24px;
+       text-align: left;
+
+       &:hover,
+       &:focus {
+           text-decoration: none;
+       }
+
+       .fa {
+           transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+       }
+
+       &[aria-expanded="true"] {
+           .fa {
+            transform: rotate(135deg);
+           }
+       }
+   }
+
+   .ks-accordian-toggler {
+        width: 40px;
+        height: 40px;
+        left: 0;
+        top: 0;
+        font-size: 18px;
+   }
+
+   .card-header {
+       background-color: #f4f4f4;
+
+       @media (max-width: 575px) {
+            padding: 0;
+       }
+   }
+
+   .collapse {
+        box-shadow: #dfdfdf -1px 5px 51px;
+   }
+}
+
+.ks-footer-card {
+    box-shadow: #dfdfdf -1px 5px 51px;
+
+    &-img {
+       width: 100px;
+    }
+}
+
+.md-m-auto {
+    @media (max-width: 991px) {
+        margin: auto;
+    }
+}
+
+.ks-xmas-play-btn {
+    width: 150px;
+}
+
+//for chritmas
+.ks-hero-bg {
+    background-color: #3f0d12;
+    background-image: linear-gradient(185deg, #6f232b 0%, #a71d31 74%);
+}
+.ks-xmas-bg {
+    background-color: #ff3348;
+    background-image: linear-gradient(185deg, #ff3348 0%, #ca0b27 74%);
+}
+
+.view-height {
+    min-height: 90vh;
+
+    @media (max-width: 1024px) {
+        min-height: 70vh;
+    }
+}
+
+.font-600 {
+    font-weight: 600;
+}
+
+.parallax-trees {
+    bottom: -90px;
+
+    @media (max-width: 330px) {
+        bottom: -100px;
+    }
+}
+
+.ks-white-trees {
+    height: 250px;
+    z-index: 2;
+
+    @media (max-width: 575px) {
+        height: 170px;
+    }
+}
+
+.ks-red-trees {
+    height: 150px;
+    z-index: 1;
+    bottom: 70px;
+
+    @media (max-width: 330px) {
+        bottom: 40px;
+    }
+}
+
+#snow-fall {
+    position:absolute;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.z-index-10 {
+    z-index: 10;
+}
+
+.ks-bell-image {
+    min-width: 100px;
+    max-width: 100px;
+    height: 100px;
+
+    @media (max-width: 575px) {
+        min-width: 60px;
+        max-width: 60px;
+        height: 60px;
+    }
+}
+
+.ks-latto-images {
+    width: 150px;
+}
+
+.btn-red-white {
+    border-radius: 0;
+    color: #ca0b27;
+    background: white;
+    @extend .btn-hover-effect;
+}
+
+.btn-hover-effect {
+    transition: 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.cube {
+    position: absolute;
+    top: 80%;
+    left: 45%;
+    width: 10px;
+    height: 10px;
+    border: solid 1px #e28390;
+    transform-origin: top left;
+    transform: scale(0) rotate(0deg) translate(-50%, -50%);
+    animation: cube 4s ease-in forwards infinite;
+}
+.cube:nth-child(2) {
+    animation-delay: 2s;
+    left: 25%;
+    top: 40%;
+}
+.cube:nth-child(3) {
+    animation-delay: 4s;
+    left: 75%;
+    top: 50%;
+}
+.cube:nth-child(4) {
+    animation-delay: 6s;
+    left: 90%;
+    top: 10%;
+}
+.cube:nth-child(5) {
+    animation-delay: 8s;
+    left: 10%;
+    top: 85%;
+}
+.cube:nth-child(6) {
+    animation-delay: 10s;
+    left: 90%;
+    top: 90%;
+}
+
+@keyframes cube {
+    from {
+        transform: scale(0) rotate(0deg) translate(-50%, -50%);
+        opacity: 1;
+    }
+    to {
+        transform: scale(10) rotate(960deg) translate(-50%, -50%);
+        opacity: 0.5;
+    }
+}
+
+.ks-ev-decorator {
+    min-width: calc(100% + 1px);
+    max-width: calc(100% + 1px);
+    bottom: -1px;
+    left: 0;
+}
+
+.ks-ev-date {
+    width: 100px;
+    height: 100px;
+    margin-top: -70px;
+}
+
+.btn.ks-xmas-bg,
+.btn.ks-xmas-bg-black {
+    border-radius: 0;
+    @extend .btn-hover-effect;
+}
+
+.ks-xmas-bg-black {
+    background-color: #000;
+}
+
+.ks-xmas-client {
+    box-shadow: #dfdfdf -1px 5px 51px;
+
+    &-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    &-quotes {
+        width: 60px;
+        padding: 5px;
+        height: 70px;
+        border-radius: 5px;
+        top: -20px;
+
+        img {
+            margin-top: 5px;
+        }
+    }
+}
+
+.ks-xmas-pricing {
+    &-head {
+        &.head-black {
+            background-color: #000000;
+        }
+    }
+
+    &:hover {
+       .ks-card-wave-layer {
+           &.layer-1 {
+                transform: translate3d(15px, 0, 0);
+           }
+
+           &.layer-2 {
+                transform: translate3d(-15px, 0, 0);
+           }
+
+           &.layer-3 {
+                transform: translate3d(-15px, 0, 0);
+            }
+       }
+    }
+}
+
+.ks-card-wave {
+    position: absolute;
+    bottom: -70px;
+    left: 0;
+    width: 100%;
+    height: 160px;
+
+    &-layer {
+        transition: transform 0.5s;
+    }
+}
+
+.santa-flying {
+    animation: flywithme 4s ease-in-out;
+}
+
+@keyframes flywithme {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+
+@keyframes moonZoom {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.ks-xmas-pass-info {
+    li {
+        font-size: 20px;
+        border-bottom: 1px solid rgba(204, 204, 204, 0.38);
+        padding: 10px 0;
+        width: 80%;
+        margin: auto;
+    }
+}
+
+.ks-xmas-accordian {
+   .btn-link {
+       color: #d11a1c;
+       font-size: 24px;
+       text-align: left;
+       white-space: normal;
+
+       &:hover,
+       &:focus {
+           text-decoration: none;
+       }
+
+       .fa {
+           transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+       }
+
+       &[aria-expanded="true"] {
+           .fa {
+            transform: rotate(135deg);
+           }
+       }
+   }
+
+   .ks-accordian-toggler {
+        width: 40px;
+        height: 40px;
+        left: 0;
+        top: 0;
+        font-size: 18px;
+   }
+
+   .card-header {
+       background-color: #f4f4f4;
+
+       @media (max-width: 575px) {
+            padding: 0;
+       }
+   }
+
+   .collapse {
+        box-shadow: #dfdfdf -1px 5px 51px;
+   }
+}
+
+.ks-footer-card {
+    box-shadow: #dfdfdf -1px 5px 51px;
+
+    &-img {
+       width: 100px;
+    }
+}
+
+.md-m-auto {
+    @media (max-width: 991px) {
+        margin: auto;
+    }
+}
+
+.ks-xmas-play-btn {
+    width: 150px;
+}
+
+.ks-adjust-font {
+    @media (max-width: 575px) {
+        .display-2,
+        .display-3 {
+            font-size: 40px;
+        }
+      }
+}
+
+//new year landing page
+.ks-ny-parallax {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.ks-ny-hero {
+    position: relative;
+    margin-left: -1px;
+
+    img {
+        width: 100%;
+        position: relative;
+        margin-top: -80px;
+        object-fit: cover;
+        min-height: 100vh;
+
+         @media (max-width: 1024px) {
+            min-height: 80vh;
+
+        }
+
+        @media (max-height: 700px) {
+            min-height: 100vh;
+
+        }
+    }
+
+    &-text {
+        color: #ffff;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 100px;
+        text-shadow: 3px 4px 5px black;
+
+        @media (max-width: 1024px) and (min-width: 576px) {
+             margin-top: 200px;
+        }
+
+        &-sub {
+            font-size: 35px;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 4px;
+            margin-bottom: -50px;
+        }
+        &-main {
+            font-size: 200px;
+
+            @media (max-width: 1024px) {
+                font-size: 160px;
+                justify-content: center;
+            }
+
+            @media (max-width: 575px) {
+                font-size: 100px;
+                margin-top: 30px;
+            }
+        }
+    }
+}
+
+.ks-ny-dark {
+    background-color: #010101;;
+    color: #fff;
+
+    .ks-ny-heading-txt {
+       color: #fff;
+    }
+}
+
+.parallax-after {
+    position: relative;
+    z-index: 1;
+}
+
+.parallax-1 {
+    z-index: 1;
+}
+
+.ks-ny-heading {
+    &-txt {
+        font-size: 60px;
+        color: black;
+        @media (max-width: 575px) {
+            line-height: 1;
+            font-size: 40px;
+        }
+
+        &.heading-anim {
+            text-shadow: 0 0 4px black, 0 0 9px white;
+            animation: textShadow 2s step-end infinite;
+        }
+    }
+
+    img {
+        max-height: 50px;
+    }
+}
+
+@keyframes textShadow {
+    0% {
+        text-shadow: 0 0 4px black, 0 0 19px white;
+    }
+
+    20% {
+        text-shadow: 0 0 4px black, 0 0 19px #e70045;
+    }
+    40% {
+        text-shadow: 0 0 4px black, 0 0 19px #003781;
+    }
+    60% {
+        text-shadow: 0 0 4px black, 0 0 19px #27c6b3;
+    }
+    80% {
+        text-shadow: 0 0 4px black, 0 0 19px #fd9583;
+    }
+    100% {
+        text-shadow: 0 0 4px black, 0 0 19px #003973;
+    }
+}
+
+.ks-ny-about {
+    &-pic {
+        max-height: 700px;
+        object-fit: contain;
+    }
+    &-txt {
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+}
+
+.card-container {
+    cursor: pointer;
+    height: 400px;
+    perspective: 1000px;
+    position: relative;
+    width: 100%;
+
+    &:hover {
+        .ks-card {
+            transform: rotateY(180deg);
+        }
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
+  .ks-card {
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: all 1s ease-in-out;
+    width: 100%;
+    box-shadow: 0 20px 70px -20px rgba(0, 0, 0, 0.34);
+  }
+
+  .ks-card .side {
+    backface-visibility: hidden;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    transform: translateZ(50px);
+    padding: 30px;
+
+    p {
+        color: $black;
+    }
+  }
+
+  .ks-card .back {
+    color: #ffffff;
+    line-height: 2;
+    text-align: center;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.4);
+    background-blend-mode: color;
+    font-weight: 700;
+    perspective: 100px;
+  }
+
+  .ks-ny-img-size {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      max-width: 100%;
+  }
+
+.event-time {
+    width: 110px;
+    height: 110px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: -30px;
+    right: 0;
+    background: white;
+    z-index: 100;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+    @media (max-width: 768px) {
+        top: 0px;
+    }
+
+    @media (max-width: 575px) {
+        width: 90px;
+        height: 90px;
+    }
+
+}
+
+.ks-ny-event {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    border-radius: 20px;
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    position: relative;
+
+    .event-heading ,
+    .font-weight-normal ,
+    .text-right {
+        position: relative;
+        z-index: 1;
+    }
+
+    .btn-dark {
+        border-radius: 0;
+        transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .divDecorator {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        overflow: hidden;
+
+        &:before {
+            content: '';
+                width: 300px;
+                height: 500px;
+                transform: rotate(45deg);
+                background: rgba(14, 14, 14, 0.1);
+                position: absolute;
+                top: 70px;
+                left: -40px;
+                z-index: 1;
+                border-radius: 50%;
+                transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1);
+        }
+    }
+
+    .border-bottom {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2) !important;
+    }
+
+    &:hover {
+        transform: scale(1.1) ;
+        cursor: pointer;
+    }
+
+    &.ks-event-1 {
+        background: #f8ab37;
+    }
+     &.ks-event-2 {
+        background-color: #20b3df;
+        background-color: #d6d6d6;
+    }
+     &.ks-event-3 {
+        background: #ceda2a;
+    }
+}
+
+.back-anim {
+    animation: imgPos 15s ease-in-out infinite;
+}
+
+@keyframes imgPos {
+    0%,100% {
+        background-position: right;
+    }
+    25% {
+        background-position: top;
+    }
+
+    50% {
+        background-position: bottom;
+    }
+    75% {
+        background-position: left;
+    }
+}
+
+.ks-confetti  {
+    position: absolute;
+    width: 250px;
+    top: 0;
+
+    &.left {
+        left: 0;
+    }
+
+    &.right {
+        right: 0;
+    }
+}
+
+.radius-0 {
+    border-radius: 0;
+
+    &.btn-dark  {
+        @extend .btn-hover-effect;
+    }
+}
+
+.ks-ny-highlight {
+   img {
+       width: 40px;
+
+       &.singer-svg {
+           width: 50px;
+       }
+       @media (max-width: 768px) {
+           height: 50px;
+       }
+   }
+
+   @media (max-width: 768px) {
+       display: flex;
+        width: 33%;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+   }
+}
+
+.btn-lg-xl {
+    min-width: 200px;
+    height: 60px;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 14px;
+
+    .fa {
+        margin-top: -8px;
+        margin-right: 8px;
+    }
+}
+
+.adjust-text-position {
+    margin-bottom: -100px;
+    position: relative;
+
+    @media (max-width: 575px) {
+        margin-bottom: -30px;
+    }
+}
+.ks-ny-client {
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.38);
+    background-blend-mode: color;
+
+    .ks-xmas-client {
+        box-shadow: #252323 -1px 5px 51px;
+        background: white;
+        cursor: pointer;
+
+        &-quotes {
+            transition: 0.5s ease-in-out;
+        }
+
+        &:hover {
+            .ks-xmas-client-quotes {
+                transform: rotate(360deg);
+            }
+        }
+    }
+
+    .ks-xmas-bg {
+        background-image: linear-gradient(185deg, #484848 0%, #1b1b1b 74%);
+    }
+}
+
+.font-sm-40 {
+    @media (max-width: 575px) {
+        font-size: 40px;
+    }
+}
+
+.border-right-md-0 {
+    @media (max-width: 768px) {
+        border-right: none !important;
+    }
+}
+
+.w-100-on-md {
+    @media (max-width: 1024px) {
+        width: 100%;
+    }
+}
+
+.ks-ny-event-highlight-effects {
+    .rounded-circle.overflow-hidden {
+        img {
+           transform: scale(1.1);
+           transition: 0.3s ease-in-out;
+        }
+    }
+
+    .col-lg-2.col-sm-4.col-9.mx-auto:hover {
+        cursor: pointer;
+
+        .rounded-circle.overflow-hidden {
+            img {
+               transform: scale(1) rotate(10deg);
+            }
+        }
+    }
+
+    .ks-ny-highlight {
+        img {
+            animation: imgFilter 2s ease-in-out infinite;
+        }
+
+        &:nth-child(2) {
+           img {
+                animation-duration: 4s ;
+            }
+        }
+
+        &:nth-child(3) {
+           img {
+                animation-duration: 6s ;
+            }
+        }
+    }
+}
+
+@keyframes imgFilter {
+    0% {
+       filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+.ks-ny-page {
+    h1, h2, h3, h4, h5, h6 {
+        color: black;
+    }
+}
+
+.ks-ny-arrangements,
+.w-100-on-md {
+      .row {
+        justify-content: center;
+      }
+
+      .col-lg-3 {
+
+        @media (max-width: 1200px) {
+            min-width: 300px;
+        }
+
+        @media (max-width: 575px) {
+            min-width: 300px;
+        }
+      }
+}
+
+#web_editor-top-edit {
+    ~ #wrapwrap .ks-ny-hero img {
+        margin-top: 0 !important;
+    }
+}
+
+//furniture slider new
+
+.ks-kinetik-blobs {
+    &-left {
+        bottom: 0;
+        left: 0;
+        height: 100%;
+
+        @media (max-width: 1024px) {
+            width: 100%;
+            display: flex;
+        }
+
+        img {
+            height: 90%;
+            margin-top: 10%;
+
+            @media (max-width: 1024px) {
+                height: auto;
+                margin-top: auto;
+                width: 100%;
+            }
+        }
+    }
+
+    &-right {
+        top: 0;
+        right: 0;
+        width: 30%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 575px) {
+        display: none;
+    }
+}
+
+.ks-banner-txt2 {
+    position: absolute;
+    bottom: 0;
+    padding: 20px 50px;
+
+    @media (max-width: 575px) {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        bottom: auto;
+        padding: 20px 30px;
+        min-width: 80%;
+        background: rgba(255, 255, 255, 0.82);
+    }
+
+    .ks-banner-txt-sub2 {
+        font-size: 24px;
+        position: relative;
+        display: inline-block;
+
+        @media (max-width: 575px) {
+            font-size: 20px;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: 0;
+            background: currentColor;
+            left: 0;
+        }
+    }
+
+    .ks-banner-txt-main2 {
+        font-size: 50px;
+        font-weight: bold;
+        padding-top: 20px;
+        line-height: 1.3;
+
+        @media (max-width: 575px) {
+            font-size: 28px;
+        }
+    }
+
+    .ks-banner-txt-sub2,
+    .ks-banner-txt-main2,
+    .ks-slider-btn-outer {
+        opacity: 0;
+    }
+}
+
+.ks-kinetik-slider {
+    .carousel-item.active {
+        .ks-banner-txt-sub2,
+        .ks-banner-txt-main2,
+        .ks-slider-btn-outer {
+            animation: moveleft 0.6s ease-in-out forwards;
+        }
+
+        .ks-banner-txt-main2 {
+            animation-delay: 0.3s;
+        }
+
+        .ks-slider-btn-outer {
+             animation-delay: 0.6s;
+        }
+    }
+
+    .carousel.slide .carousel-inner .carousel-item {
+        height: auto !important;
+
+        > img {
+            height: 90vh;
+            object-fit: cover;
+
+            @media (max-width: 1024px) {
+                height: 60vh;
+            }
+
+            @media (max-width: 575px) {
+                object-position: center;
+                 height: 80vh;
+            }
+        }
+    }
+
+    .carousel-indicators {
+        right: 0;
+        left: auto;
+        margin-right: 100px;
+
+        @media (max-width: 1024px) and (min-width: 576px) {
+            display: none;
+        }
+    }
+}
