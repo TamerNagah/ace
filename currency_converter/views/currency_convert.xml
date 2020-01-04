@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+
+
+
+
+         <record id="currency_converter_invoice_form_view1" model="ir.ui.view">
+            <field name="name">currency.fields.custom</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+             
+                <xpath expr="//form/sheet/group/group/div" position="after">
+                   <label for="other_cur" groups="base.group_multi_currency"/>
+                   <div groups="base.group_multi_currency">
+                      
+                       <field name="other_cur" options="{'no_create': True, 'no_open': True}" class="oe_inline"/> 
+                    </div> 
+                    
+                    <field name="other_cur_rate"/>
+                </xpath>
+                
+                <xpath expr="//form/sheet/notebook/page/group/field[@name ='amount_total']" position="after">
+                    <field name="amnt_other_curr"  force_save="1"  class="oe_subtotal_footer_separator"/>
+                </xpath>
+            </field>
+          </record>  
+          
+     </data>
+</odoo>          
