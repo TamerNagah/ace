@@ -1,7 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <data>
+<!-- for comapny customized header and footer  -->
+  <template id="emp_report_header" inherit_id="web.external_layout_standard">
+      <xpath expr="//div[@class='header']" position="replace">
+         <div class="header">
+            <div class="row">
+                <div class="col-3 mb4">
+                    <!-- <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;" alt="Logo"/> -->
+                    
+                    <t t-if="company.name =='Global Entourage Services'">
+                      <img class="img img-responsive" src="/custom_subscription/static/src/img/Header.png" /><!--  style="max-height: 5065px; max-width: 5065px;"/> -->
+                    </t>
+                    
+                    <t t-else="">
+                       <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;" alt="Logo"/> 
+                    </t>   
+                </div>
+                <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto"/>
+            </div>
+            <div t-if="company.logo or company.report_header" class="row zero_min_height">
+                <div class="col-12">
+                    <div style="border-bottom: 1px solid black;"/>
+                </div>
+            </div>
+            <t t-if="not company.name =='Global Entourage Services'">
+                <div class="row">
+                    <div class="col-6" name="company_address">
+                        <div t-field="company.partner_id"
+                            t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
+                        />
+                    </div>
+                </div>
+            </t>    
+        </div>
+      </xpath>
+      
+      
+       <xpath expr="//div[@class='footer o_standard_footer']" position="replace">
+           <div class="footer o_standard_footer">
+            <div class="text-center" style="border-top: 1px solid black;">
+            
+                <t t-if="company.name =='Global Entourage Services'">
+                    <img class="img img-responsive" src="/custom_subscription/static/src/img/Footer.png"/>
+                </t>
+                
+                
+                <t t-else="">     
+                    <ul class="list-inline mb4">
+                        <li t-if="company.phone" class="list-inline-item">Phone: <span t-field="company.phone"/></li>
+                        <li t-if="company.email" class="list-inline-item">Email: <span t-field="company.email"/></li>
+                        <li t-if="company.website" class="list-inline-item">Web: <span t-field="company.website"/></li>
+                        <li t-if="company.vat" class="list-inline-item"><t t-esc="company.country_id.vat_label or 'Tax ID'"/>: <span t-field="company.vat"/></li>
+                    </ul>
+                </t>    
+
+                <div name="financial_infos">
+                    <span t-field="company.report_footer"/>
+                </div>
+
+                <div t-if="report_type == 'pdf'" class="text-muted">
+                    Page: <span class="page"/> / <span class="topage"/>
+                </div>
+            </div>
+        </div>
+       </xpath>
+      
+      
+      
+      
+      
+      
+  </template>
+  
+  
+  
+    <!-- <template id="custom_subs_header1" inherit_id="web.external_layout_background">
+       <xpath expr="//div[@class='header']" position="replace">
+          <div class="header">
+            <div class="o_background_header">
+            <t t-if="not company.partner_id.name =='Global Entourage Services'">
+                <div class="float-right">
+                    <h3 class="mt0 text-right" t-field="company.report_header"/>
+                </div>
+            </t> 
+            
+            <t t-if="not company.partner_id.name =='Global Entourage Services'">   
+               <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" class="float-left" alt="Logo"/>
+            </t>   
+            
+            <t t-if="not company.partner_id.name =='Global Entourage Services'">
+                <div class="float-left company_address">
+                    <div>
+                        <strong t-field="company.partner_id.name"/>
+                    </div>
+                    <span t-field="company.partner_id"
+                        t-options='{"widget": "contact", "fields": ["address"], "no_marker": true}'/>
+                </div>
+             </t>   
+            <div class="clearfix mb8"/>
+            </div>
+        </div>
+       </xpath>
+    </template>  -->
+    
+    
+     
     <template id="report_document_inherit_sale_to_invoice" inherit_id="account.report_invoice_document">
+             <!-- <t t-if="o.partner_id.name != 'Global Entourage Services'">
+                <t t-set="address">
+                    <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
+                    <div t-if="o.partner_id.vat" class="mt16"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></div>
+                </t>
+            </t>   -->
             <xpath expr="//div[@class='page']" position="replace">
             
                 <div class="page">
@@ -49,8 +160,8 @@
                     </div>
                     
                     <div class="row" style="margin-top:10px; margin-bottom:10px;">
-                      <div  class="col" t-if="o.partner_id.ref"  >
-                           <span ><b style="margin-right:10px;">Customer ref:</b><span t-field="o.partner_id.ref"/></span>
+                      <div  class="col" t-if="o.customer_ref_no"  >
+                           <span ><b style="margin-right:10px;">Customer ref:</b><span t-field="o.customer_ref_no"/></span>
                             <!-- <p class="m-0" t-field="o.customer_po_no"/> -->
                             <!-- <span t-field="o.customer_po_no"/> -->
                         </div>
@@ -59,7 +170,7 @@
                     
                     <div class="row" style="margin-top:10px; margin-bottom:20px;">
                       <div  class="col" t-if="o.customer_po_no"  >
-                           <span ><b style="margin-right:10px;">Customer PO no:</b><span t-field="o.customer_po_no"/></span>
+                           <span ><b style="margin-right:10px;">PO/Contract ref #:</b><span t-field="o.customer_po_no"/></span>
                             <!-- <p class="m-0" t-field="o.customer_po_no"/> -->
                             <!-- <span t-field="o.customer_po_no"/> -->
                         </div>
@@ -68,9 +179,9 @@
                     <t t-set="display_discount" t-value="any([l.discount for l in o.invoice_line_ids])"/>
                     
                     
-                     <p t-if="o.comment" name="comment">
+                     <!-- <p t-if="o.comment" name="comment">
                         <span t-field="o.comment"/>
-                    </p> 
+                    </p>  -->
                     <table class="table table-sm o_main_table" name="invoice_line_table">
                         <thead>
                             <tr>
@@ -194,19 +305,33 @@
                                     </tr>
                                     
                                   <t t-set="tot_ammnt"  t-value="0"/>
-                                    
-                                    <t t-if="o.move_id">
+                                   <t t-if="o.amnt_other_curr">
+                                      <tr class="o_total">
+                                            <td><strong>Total in <span t-field="o.other_cur.name"/></strong></td>
+                                            <td class="text-right">
+                                              <span t-esc="'{:,.2f}'.format(o.amnt_other_curr)"/>
+                                              
+                                            </td>
+                                       </tr>
+                                   </t>  
+                                    <!-- <t t-if="o.move_id">
                                         <t t-foreach="o.move_id.line_ids" t-as="deb">
                                            <t t-set="tot_ammnt" t-value="tot_ammnt+deb.debit"/>
                                         </t> 
                                         <tr class="o_total">
-                                            <td><strong>Total in base currency:</strong></td>
+                                            <td><strong>Total in AFN:</strong></td>
                                             <td class="text-right">
-                                                <span t-esc="'{:,.2f}'.format(tot_ammnt)"/>
-                                            </td>
+                                              <span t-esc="afn_total"/> -->
+                                              <!-- <t t-foreach="o.move_id.line_ids" t-as="amnt">
+                                               <t t-if="amnt.account_id.name =='Account Receivable'">
+                                                  <span t-field="amnt.amount_currency"/> -->
+                                                <!-- <span t-esc="'{:,.2f}'.format(tot_ammnt)"/> -->
+                                               <!-- </t> 
+                                              </t>  -->
+                                            <!-- </td>
                                         </tr>
                                        
-                                    </t>    
+                                    </t>     -->
                                 </table>
                             </div>
                         </div>
@@ -214,9 +339,9 @@
                     <p t-if="o.reference">
                         Please use the following communication for your payment : <b><span t-field="o.reference"/></b>
                     </p>
-                    <!-- <p t-if="o.comment" name="comment">
+                    <p t-if="o.comment" name="comment">
                         <span t-field="o.comment"/>
-                    </p> -->
+                    </p>
                     <p t-if="o.payment_term_id" name="payment_term">
                         <span t-field="o.payment_term_id.note"/>
                     </p>
@@ -236,5 +361,6 @@
             
             </xpath>
     </template>  
+    
   </data>
 </odoo>  

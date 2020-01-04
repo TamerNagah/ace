@@ -12,7 +12,8 @@
             'account',
             'product',
             'stock',
-            'sale_subscription'
+            'sale_subscription',
+            'currency_converter'
         ],
     'data':
         [

@@ -223,7 +223,7 @@ class sale_to_subs(models.Model):
             'transaction_ids': [(6, 0, self.transaction_ids.ids)],
         }
         if self.subscribe_dt:
-            invoice_vals['comment']="This invoice covers the following period: " + st_date+" - "+ l_date
+            invoice_vals['comment']="Invoice period: " + st_date+" - "+ l_date
             
         return invoice_vals
     
@@ -367,9 +367,13 @@ class sale_to_subs(models.Model):
         recurring_next_date = today + invoicing_period
          
         start_date_of_month=today.replace(day=1)
-        new_recurring_next_date= start_date_of_month + relativedelta(months=1)
+        #new_recurring_next_date= start_date_of_month + relativedelta(months=1)
         #values['recurring_next_date'] = fields.Date.to_string(recurring_next_date)
-        values['recurring_next_date'] = fields.Date.to_string(new_recurring_next_date)
+        if self.subscribe_dt:
+            new_recurring_next_date=(self.subscribe_dt+relativedelta(months=1)).replace(day=1)
+            values['recurring_next_date'] = fields.Date.to_string(new_recurring_next_date)
+        else:
+            values['recurring_next_date'] = fields.Date.to_string(recurring_next_date)    
         return values
 
     
@@ -421,7 +425,7 @@ class sale_order_line_to_subs(models.Model):
             yr_month=self.order_id.subscribe_dt.month
             days_of_month=calendar.monthrange(yr, yr_month)[-1]
             total_days_for_bill = days_of_month-(self.order_id.subscribe_dt.day-1)
-            new_price = round((self.price_unit/days_of_month)*total_days_for_bill) 
+            new_price = round((self.price_unit/days_of_month)*total_days_for_bill,3) 
           
         #code
             
