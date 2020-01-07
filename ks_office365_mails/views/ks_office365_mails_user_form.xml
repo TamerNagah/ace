@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="ks_office365_mails_view_users_form" model="ir.ui.view">
+        <field name="name">office365.mails.res.user.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="ks_office365_base.ks_office365_view_users_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Office365 Mails" attrs="{'invisible': [('ks_auth_token', '=', False)]}">
+                    <div class="ks_invisible_fields">
+                        <field name="ks_import_office365_mail" invisible="1"/>
+                        <field name="ks_export_office365_mail" invisible="1"/>
+                    </div>
+                    <div class="row">
+<!--                        <div class="col-3" style="padding: 10px;">-->
+<!--                            <span style="font-size: 14px; font-weight: bold;">-->
+<!--                                Sync using field-->
+<!--                            </span>-->
+<!--                        </div>-->
+<!--                        <div class="col-3">-->
+<!--                            <group>-->
+<!--                               <field name="ks_sync_using_date" readonly="1"/>-->
+<!--                            </group>-->
+<!--                        </div>-->
+<!--                        <div class="col-3">-->
+<!--                            <group>-->
+<!--                               <field name="ks_sync_using_email" readonly="1"/>-->
+<!--                            </group>-->
+<!--                        </div>-->
+<!--                        <div class="col-3">-->
+<!--                            <group>-->
+<!--                                <field name="ks_sync_using_mail_subject" readonly="1"/>-->
+<!--                            </group>-->
+<!--                        </div>-->
+                        <div class="col-3" style="padding: 10px;">
+                            <span style="font-size: 14px; font-weight: bold;">
+                                Sync Mails from last (in days)
+                            </span>
+                        </div>
+                        <div class="col-1" style="font-size: 14px; font-weight: bold; padding: 10px;">
+                            <field name="ks_sync_days_before"
+                                   style="width: 58px; margin: -7px 63px 0px 4px; text-align: initial;"
+                                   widget="integer"/>
+                        </div>
+                        <div class="col-2" style="flex-direction: row; width: 48%; justify-content: left;">
+                            <field name="ks_sync_using_days"
+                                   style="margin: 10px 0px 4px -19px;"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6" style="text-align: left; margin-top: 10px;">
+                            <span style="font-size: 12px; font-weight: bold;">
+                                Filter Domain on Outlook
+                            </span>
+                            <group>
+                                <field name="ks_option_inbox" string="Inbox"/>
+                                <field name="ks_option_sentitems" string="Sent Items"/>
+                                <field name="ks_option_archive" string="Archive"/>
+                            </group>
+                        </div>
+                        <div class="col-6" style="text-align: left; margin-top: 10px;">
+                                <span style="font-size: 12px; font-weight: bold;">
+                                Filter Domain on Odoo Records
+                                </span>
+                            <group>
+
+                                <field name="ks_mail_filter_domain"
+                                       widget="domain"
+                                       string=""
+                                       options="{'model': 'mail.mail',
+                                       'in_dialog': True}"
+                                />
+                            </group>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6" style="text-align: center; margin-top: 10px;">
+                                <button string="Sync Office365 Mails to Odoo"
+                                        name="ks_get_mails" type="object"
+                                        class="btn btn-success"
+                                attrs="{'invisible': [('ks_import_office365_mail', '=', False)]}"/>
+                        </div>
+                        <div class="col-6" style="text-align: center; margin-top: 10px;">
+                                <button string="Sync Odoo Mails to Office365"
+                                        name="ks_post_mails"
+                                        type="object"
+                                        class="btn btn-success"
+                                attrs="{'invisible': [('ks_export_office365_mail', '=', False)]}"/>
+                        </div>
+                    </div>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <record id="office365_settings_mail_scope" model="ir.ui.view">
+        <field name="name">office365.setting.mail.form.view</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="ks_office365_base.ks_office_scope_page"/>
+        <field name="arch" type="xml">
+            <div class="col-12" position="inside">
+                <group string="Office365 Mails">
+                    <field name="ks_import_office365_mail" attrs="{'readonly': [('ks_auth_token', '!=', '')]}"/>
+                    <field name="ks_export_office365_mail" attrs="{'readonly': [('ks_auth_token', '!=', '')]}"/>
+                </group>
+            </div>
+        </field>
+    </record>
+
+<!--    <record id="ks_office365_contact_filter" model="ir.ui.view">-->
+<!--        <field name="name">office.calendar.filter</field>-->
+<!--        <field name="model">ks_office365.logs</field>-->
+<!--        <field name="inherit_id" ref="ks_office365_base.ks_office365_logs_filter"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//search" position="inside">-->
+<!--                <filter string="Contact" name="module_task" domain="[('ks_module_type', '=', 'contact')]"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+</odoo>
