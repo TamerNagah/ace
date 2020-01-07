@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ks_office_messages_wizard" model="ir.ui.view">
+        <field name="name">Messages Form View</field>
+        <field name="model">ks_office365.messages_wizard</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false" save="false">
+                <field name="name"/>
+                <footer>
+<!--                    <button class="btn btn-primary" special="cancel"/>-->
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
