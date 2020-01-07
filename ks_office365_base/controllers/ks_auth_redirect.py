@@ -4,11 +4,14 @@ import werkzeug.utils
 from odoo import http
 from odoo.http import request
 
+import logging
+logger = logging.getLogger(__name__)
 
 class RedirectCode(http.Controller):
 
     @http.route("/office365/callback", auth="public")
     def fetch_code(self, **kwargs):
+        logger.info("Office=======%s", kwargs)
         ks_user = request.env['res.users'].sudo().search([('id', '=', request.env.user.id)])
         if "error" in kwargs:
             ks_user.ks_create_log("authentication", "", "", 0, datetime.today(), "authentication", "authentication",
