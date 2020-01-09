@@ -59,20 +59,20 @@
                                 <field name="ks_option_archive" string="Archive"/>
                             </group>
                         </div>
-                        <div class="col-6" style="text-align: left; margin-top: 10px;">
-                                <span style="font-size: 12px; font-weight: bold;">
-                                Filter Domain on Odoo Records
-                                </span>
-                            <group>
+<!--                        <div class="col-6" style="text-align: left; margin-top: 10px;">-->
+<!--                                <span style="font-size: 12px; font-weight: bold;">-->
+<!--                                Filter Domain on Odoo Records-->
+<!--                                </span>-->
+<!--                            <group>-->
 
-                                <field name="ks_mail_filter_domain"
-                                       widget="domain"
-                                       string=""
-                                       options="{'model': 'mail.mail',
-                                       'in_dialog': True}"
-                                />
-                            </group>
-                        </div>
+<!--                                <field name="ks_mail_filter_domain"-->
+<!--                                       widget="domain"-->
+<!--                                       string=""-->
+<!--                                       options="{'model': 'mail.mail',-->
+<!--                                       'in_dialog': True}"-->
+<!--                                />-->
+<!--                            </group>-->
+<!--                        </div>-->
                     </div>
                     <div class="row">
                         <div class="col-6" style="text-align: center; margin-top: 10px;">
@@ -81,13 +81,13 @@
                                         class="btn btn-success"
                                 attrs="{'invisible': [('ks_import_office365_mail', '=', False)]}"/>
                         </div>
-                        <div class="col-6" style="text-align: center; margin-top: 10px;">
-                                <button string="Sync Odoo Mails to Office365"
-                                        name="ks_post_mails"
-                                        type="object"
-                                        class="btn btn-success"
-                                attrs="{'invisible': [('ks_export_office365_mail', '=', False)]}"/>
-                        </div>
+<!--                        <div class="col-6" style="text-align: center; margin-top: 10px;">-->
+<!--                                <button string="Sync Odoo Mails to Office365"-->
+<!--                                        name="ks_post_mails"-->
+<!--                                        type="object"-->
+<!--                                        class="btn btn-success"-->
+<!--                                attrs="{'invisible': [('ks_export_office365_mail', '=', False)]}"/>-->
+<!--                        </div>-->
                     </div>
                 </page>
             </notebook>
