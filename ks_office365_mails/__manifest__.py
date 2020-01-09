@@ -59,7 +59,7 @@
     'website': "https://www.ksolves.com",
     'maintainer': 'Ksolves India Pvt. Ltd.',
     'category': 'Tools',
-    'version': '12.0.1.0.0',
+    'version': '12.0.1.1.0',
     'support': 'sales@ksolves.com',
 
     "depends": ['base',
