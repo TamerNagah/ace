@@ -8,12 +8,14 @@ class Office365MailMail(models.Model):
 
     _inherit = "mail.mail"
 
+    @api.model
     def create(self, values):
         """Overriding the Create Function of Original Mail.mail"""
         values['auto_delete'] = False
         res = super(Office365MailMail, self).create(values)
         return res
 
+    @api.model
     def write(self, vals):
         vals['auto_delete'] = False
         res = super(Office365MailMail, self).write(vals)

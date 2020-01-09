@@ -353,13 +353,14 @@ class KsMailsUsers(models.Model):
 
         if mail_id.get('internetMessageId'):
             cond = [('message_id', '=', mail_id.get('internetMessageId'))]
-            ks_mail_check = self.env['mail.message'].search(cond)
-            if ks_mail_check:
-                is_folder_change = self.ks_check_mail_folder_change(ks_mail_check, folder)
-                if is_folder_change:
-                    # Changing The Mail Channel Or Updating The Folder
-                    self.ks_change_mail_channel(ks_mail_check, folder)
-            if ks_mail_check:
+            ks_mail_checks = self.env['mail.message'].search(cond)
+            if ks_mail_checks:
+                for ks_mail_check in ks_mail_checks:
+                    is_folder_change = self.ks_check_mail_folder_change(ks_mail_check, folder)
+                    if is_folder_change:
+                        # Changing The Mail Channel Or Updating The Folder
+                        self.ks_change_mail_channel(ks_mail_check, folder)
+            if ks_mail_checks:
                 return True
             else:
                 return False
@@ -534,9 +535,7 @@ class KsMailsUsers(models.Model):
             ks_sync_error = False
             users_mail = self.env['mail.mail'].search(ks_mail_mail_domain)
             for odoo_mail in users_mail:
-                ks_mail = [mail
-                           for mail in mails
-                           if mail.get('internetMessageId') == odoo_mail.message_id]
+                ks_mail = self.ks_match_message(odoo_mail, mails)
                 ks_folder = destination_folder
                 if not ks_mail:
                     ks_some_error = self.ks_create_mail_data(odoo_mail, ks_folder, ks_mail_exported, head)
@@ -678,6 +677,38 @@ class KsMailsUsers(models.Model):
                                        attach.id, datetime.today(),
                                        "odoo_to_office",
                                        "create", "success", "Attachment Uploaded At Outlook!")
+
+    def ks_match_message(self, odoo_mail, mails):
+        """ Function To Match If Message Is Already Sent Or Not """
+
+        for mail in mails:
+            if mail.get('internetMessageId') == odoo_mail.message_id:
+                return True
+            else:
+                ks_mail_date = mail.get('receivedDateTime').split('T')[0]
+                ks_odoo_date = datetime.strftime(odoo_mail.date, '%Y-%m-%d')
+                try:
+                    ks_mail_time = int(mail.get('receivedDateTime').split('T')[1][:2])
+                    ks_odoo_time = int(datetime.strftime(odoo_mail.date, '%H'))
+                except Exception as ks_err:
+                    # Commented to avoid creating the extra log
+                    # self.ks_create_log("mail", odoo_mail.date + "/" + odoo_mail.subject,
+                    #                    odoo_mail.message_id,
+                    #                    mail.id,
+                    #                    datetime.today(), "odoo_to_office", "create",
+                    #                    "failed", ks_err)
+                    print(ks_err)
+                    continue
+                ks_mail_recipients = sorted([mail.get('emailAddress').get('address') for mail in mail.get('toRecipients')])
+                ks_odoo_recipients = sorted([mail.email for mail in odoo_mail.recipient_ids])
+                if mail.get('subject') == odoo_mail.subject \
+                        and ks_mail_date == ks_odoo_date\
+                        and len(ks_mail_recipients) == len(ks_odoo_recipients)\
+                        and ks_mail_recipients == ks_odoo_recipients\
+                        and ks_mail_time == ks_odoo_time:
+                    return True
+        # If No Matching Result Found, Return False
+        return False
 
     def ks_make_endpoint(self,
                          ks_mail_exported,
