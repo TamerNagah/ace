@@ -1,22 +1,20 @@
 from datetime import datetime
 import werkzeug
+import logging
 import werkzeug.utils
 from odoo import http
 from odoo.http import request
 
-import logging
-logger = logging.getLogger(__name__)
+_logger = logging.getLogger(__name__)
+
 
 class RedirectCode(http.Controller):
 
     @http.route("/office365/callback", auth="public")
     def fetch_code(self, **kwargs):
-        logger.info("Office=======%s", kwargs)
         ks_user = request.env['res.users'].sudo().search([('id', '=', request.env.user.id)])
         if "error" in kwargs:
-            ks_user.ks_create_log("authentication", "", "", 0, datetime.today(), "authentication", "authentication",
-                                  "failed", kwargs['error'] + "\n" + kwargs['error_description'] + "\n\n" +
-                                  "To avoid ths error, Please select both import and export scopes.")
+            _logger.error('Login with Microsoft Failed \nReason: %s' % kwargs["error"])
 
         ks_setting = request.env['ks_office365.settings'].sudo().search([], limit=1)
         if 'state' in kwargs and kwargs['state'] == 'office_login':
@@ -31,7 +29,8 @@ class RedirectCode(http.Controller):
 
             else:
                 user = ks_user.ks_login_office_user(ks_setting, ks_code)
-
+                if not user:
+                    return werkzeug.utils.redirect("/")
                 request.session.rotate = True
                 request.session.uid = user.id
                 request.session.login = user.login
@@ -39,6 +38,7 @@ class RedirectCode(http.Controller):
                 request.uid = user.id
                 request.disable_db = False
                 ks_setting.write({'ks_office_login': False})
+                _logger.info('\'%s\' successfully logged in with Microsoft' % user.name)
                 return werkzeug.utils.redirect("/")
         else:
             return request.render("ks_office365_base.ks_authentication_redirect_fail_page", {})
