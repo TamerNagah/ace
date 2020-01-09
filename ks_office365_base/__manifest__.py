@@ -57,11 +57,11 @@
     'author': "Ksolves India Pvt. Ltd.",
     'license': 'OPL-1',
     'currency': 'EUR',
-    'price': 59.0,
+    'price': 99.0,
     'website': "https://www.ksolves.com",
     'maintainer': 'Ksolves India Pvt. Ltd.',
     'category': 'Tools',
-    'version': '12.0.2.1.2',
+    'version': '12.0.2.1.3',
     'support': 'sales@ksolves.com',
     "images": [
         "static/description/banners/base_banner_v12.gif",
