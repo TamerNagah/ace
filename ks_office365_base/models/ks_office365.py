@@ -1,9 +1,11 @@
 from odoo import models, fields, api, http, _
 import requests
+import logging
 from datetime import datetime
 import json
 from odoo.http import request
-from odoo.exceptions import ValidationError
+
+_logger = logging.getLogger(__name__)
 
 
 class KsJob(models.Model):
@@ -33,6 +35,8 @@ class Office365(models.Model):
     ks_scope = fields.Char("Scope")
     ks_auth_token = fields.Char("Authorization Token", store=True)
     ks_auth_refresh_token = fields.Char("Refresh Token", store=True)
+    ks_auth_user_name = fields.Char("Username", readonly=True)
+    ks_auth_user_email = fields.Char("Email", readonly=True)
 
     def ks_is_job_completed(self, ks_job, ks_module):
         ks_previous_job = self.env["ks.office.job"].search([('ks_records', '>=', 0), ('ks_status', '=', 'error'),
@@ -174,6 +178,13 @@ class Office365(models.Model):
             'url': url
         }
 
+    def ks_clear_token(self):
+        self.sudo().write({
+            'ks_auth_token': False,
+            'ks_auth_user_name': False,
+            'ks_auth_user_email': False
+        })
+
     def ks_generate_token(self):
         ks_current_datatime = datetime.today()
         api_endpoint = "https://login.microsoftonline.com/common/oauth2/v2.0/token"
@@ -208,12 +219,28 @@ class Office365(models.Model):
             token_type = json_data['token_type']
             self.ks_auth_token = token_type + " " + access_token
             self.ks_auth_refresh_token = refresh_token
+            self.ks_save_auth_user_details(self.ks_auth_token)
             self.ks_create_log("authentication", "Authentication", "", 0, ks_current_datatime, "authentication",
                                "authentication", "success", "Token generated successful!")
         else:
             self.ks_create_log("authentication", "Authentication", "", 0, ks_current_datatime, "authentication",
                                "authentication", "failed", json_data['error_description'])
             return self.ks_show_error_message("Authentication failed!\n Check log to know more")
+
+    # Showing user details whose token is generated
+    def ks_save_auth_user_details(self, ks_auth_token):
+        ks_head = {
+            "Authorization": ks_auth_token,
+            "Host": "graph.microsoft.com"
+        }
+        ks_office_auth_user = json.loads(requests.get("https://graph.microsoft.com/v1.0/me/", headers=ks_head).text)
+        if 'error' not in ks_office_auth_user:
+            self.write({
+                'ks_auth_user_name': ks_office_auth_user['displayName'] or ks_office_auth_user['userPrincipalName'],
+                'ks_auth_user_email': ks_office_auth_user['userPrincipalName']
+            })
+        else:
+            _logger.error("Unable to fetch User's Profile \nReason: %s" % ks_office_auth_user['error'])
 
     """ Login with MIcrosoft Account """
     def ks_login_office_user(self, ks_setting, ks_code):
@@ -248,26 +275,22 @@ class Office365(models.Model):
             if 'error' not in ks_json:
                 _name = ks_json['displayName']
                 _email = ks_json['userPrincipalName']
-
                 user = request.env['res.users'].sudo().search([('login', '=', _email)])
                 if not user:
-                    user = request.env['res.users'].sudo().create({'name': _name, 'login': _email, 'email': _email})
-
+                    user = request.env['res.users'].sudo().create({'name': _name or _email, 'login': _email, 'email': _email})
                 group_ids = self.env['res.groups']\
                     .search([('name', 'in', ['Office365 Users', 'Contact Creation', 'Technical Features'])]).ids
                 group_ids.append(self.env.ref('base.group_user').id)
                 user.groups_id = [(4, gid) for gid in group_ids]
                 return user
             else:
-                raise ValidationError(_("Error Logging In \nReason: %s" % ks_json['error_description']))
+                _logger.error(_("Error Login with Microsoft \nReason: %s" % ks_json['error_description']))
         else:
-            raise ValidationError(_("Error Logging In \nReason: %s" % json_data['error_description']))
+            _logger.error(_("Error Login with Microsoft \nReason: %s" % json_data['error_description']))
 
     """ Defines scope for token generation """
     def get_scope(self):
-        ks_current_datatime = datetime.today()
-
-        ks_scope = ""
+        ks_scope = str()
         ks_calendar_installed = self.env['ir.module.module'].sudo().search(
             [('name', '=', 'ks_office365_calendar'), ('state', '=', 'installed')])
         ks_contact_installed = self.env['ir.module.module'].sudo().search(
@@ -278,83 +301,28 @@ class Office365(models.Model):
             [('name', '=', 'ks_office365_mails'), ('state', '=', 'installed')])
 
         if ks_calendar_installed:
-            if self.ks_import_office_calendar and not self.ks_export_office_calendar:
-                ks_scope = "Calendars.Read"
-            elif self.ks_export_office_calendar:
-                ks_scope = "Calendars.ReadWrite"
-            else:
-                self.ks_create_log("authentication", "Authentication", "", 0, ks_current_datatime, "authentication",
-                                   "authentication", "failed", "Calendar scope not specified.")
-                return self.ks_show_error_message("Scope of the Calendar is not defined.")
+            ks_scope = "Calendars.ReadWrite"
 
         if ks_contact_installed:
-            if ks_scope == "":
-                if self.ks_import_office365_contact and not self.ks_export_office365_contact:
-                    ks_scope = "Contacts.Read"
-                elif self.ks_export_office365_contact:
-                    ks_scope = "Contacts.ReadWrite"
-                else:
-                    self.ks_create_log("authentication", "Authentication", "", 0, ks_current_datatime, "authentication",
-                                       "authentication",
-                                       "failed", "Contact scope not specified.")
-                    return self.ks_show_error_message("Scope of the Contacts is not defined.")
+            if not ks_scope:
+                ks_scope = "Contacts.Read"
             else:
-                if self.ks_import_office365_contact and not self.ks_export_office365_contact:
-                    ks_scope += " Contacts.Read"
-                elif self.ks_export_office365_contact:
-                    ks_scope += " Contacts.ReadWrite"
-                else:
-                    self.ks_create_log("authentication", "Authentication", "", 0, ks_current_datatime, "authentication",
-                                       "authentication",
-                                       "failed", "Contact scope not specified.")
-                    return self.ks_show_error_message("Scope of the Contacts is not defined.")
+                ks_scope += " Contacts.ReadWrite"
 
         if ks_task_installed:
-            if ks_scope == "":
-                if self.ks_task_import and not self.ks_task_export:
-                    ks_scope = "Tasks.Read"
-                elif self.ks_task_export:
-                    ks_scope = "Tasks.ReadWrite"
-                else:
-                    self.ks_create_log("authentication", "Authentication", "", 0, ks_current_datatime, "authentication",
-                                       "authentication",
-                                       "failed", "Tasks scope not specified.")
-                    return self.ks_show_error_message("Scope of the Tasks is not defined.")
+            if not ks_scope:
+                ks_scope = "Tasks.ReadWrite"
             else:
-                if self.ks_task_import and not self.ks_task_export:
-                    ks_scope += " Tasks.Read"
-                elif self.ks_task_export:
-                    ks_scope += " Tasks.ReadWrite"
-                else:
-                    self.ks_create_log("authentication", "Authentication", "", 0, ks_current_datatime, "authentication",
-                                       "authentication",
-                                       "failed", "Tasks scope not specified.")
-                    return self.ks_show_error_message("Scope of the Tasks is not defined.")
+                ks_scope += " Tasks.ReadWrite"
 
         if ks_mail_installed:
-            if ks_scope == "":
-                if self.ks_import_office365_mail and not self.ks_export_office365_mail:
-                    ks_scope = "Mail.Read"
-                elif self.ks_export_office365_mail:
-                    ks_scope = "Mail.ReadWrite"
-                else:
-                    self.ks_create_log("authentication", "Authentication", "", 0, ks_current_datatime, "authentication",
-                                       "authentication",
-                                       "failed", "Mail scope not specified.")
-                    return self.ks_show_error_message("Scope of the Mail is not defined.")
+            if not ks_scope:
+                ks_scope = "Mail.ReadWrite"
             else:
-                if self.ks_import_office365_mail and not self.ks_export_office365_mail:
-                    ks_scope += " Mail.Read"
-                elif self.ks_export_office365_mail:
-                    ks_scope += " Mail.ReadWrite"
-                else:
-                    self.ks_create_log("authentication", "Authentication", "", 0, ks_current_datatime, "authentication",
-                                       "authentication",
-                                       "failed", "Mail scope not specified.")
-                    return self.ks_show_error_message("Scope of the Mail is not defined.")
+                ks_scope += " Mail.ReadWrite"
 
         if not ks_scope:
-            raise ValidationError(_("You have to install at least one of the modules to generate token"))
+            _logger.error(_("You have to install at least one of the modules to generate token"))
 
         return ks_scope
 
