@@ -1,7 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_ks_office365_settings,ks_office365.settings,model_ks_office365_settings,ks_office365_base.office_users_group_id,1,1,1,1
-access_ks_office365_settings,ks_office365.settings,model_ks_office365_settings,ks_office365_base.office_manager_group_id,1,1,1,1
-access_ks_office365_logs,ks_office365.logs,model_ks_office365_logs,,1,0,0,1
-access_ks_office_job_id,ks_office_job,model_ks_office_job,ks_office365_base.office_manager_group_id,1,1,1,1
-access_ks_office_user_profile,ks_user_profile,model_res_users,ks_office365_base.office_users_group_id,1,1,0,0
-access_ks_deleted,ks_deleted,model_ks_deleted,,1,1,1,1
