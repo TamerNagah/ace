@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+"access_ir_mail_server","ir_mail_server","model_ir_mail_server",,1,1,1,1
+"access_fetchmail_server","fetchmail_server","model_fetchmail_server",,1,1,1,1
+"access_mail_server","mail_server","model_mail_server",,1,1,1,1
+"access_mail_server_admin","mail_server","model_mail_server",base.group_system,1,1,1,1

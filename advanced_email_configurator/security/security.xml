@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+        <record model="ir.rule" id="res_users_rule">
+            <field name="name">Allow All user to change prefernece settings</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="domain_force">[('id','=',user.id)]</field>
+            <field name="groups" eval="[(4,ref('base.group_user'))]" />
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+
+        <record model="ir.rule" id="res_users_rule">
+            <field name="name">Admin User Access</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4,ref('base.user_admin'))]" />
+        </record>
+
+        <record model="ir.rule" id="res_partner_rule">
+            <field name="name">Allow All partner to change prefernece settings</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="domain_force">[('id','=',user.partner_id.id)]</field>
+            <field name="groups" eval="[(4,ref('base.group_user'))]" />
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.rule" id="res_partner_contact_creation_rule">
+            <field name="name">Contact Creation Access</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4,ref('base.group_partner_manager'))]" />
+        </record>
+    </data>
+</odoo>

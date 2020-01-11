@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="gmail_provider" model="mail.server">
+            <field name="name">Gmail</field>
+            <field name="smtp_host">smtp.gmail.com</field>
+            <field name="smtp_port">465</field>
+            <field name="smtp_debug">False</field>
+            <field name="smtp_encryption">ssl</field>
+            <field name="server">imap.gmail.com</field>
+            <field name="port">993</field>
+            <field name="type">imap</field>
+            <field name="is_ssl">True</field>
+        </record>
+
+        <record id="zoho_provider" model="mail.server">
+            <field name="name">Zoho</field>
+            <field name="smtp_host">smtp.zoho.com</field>
+            <field name="smtp_port">465</field>
+            <field name="smtp_debug">False</field>
+            <field name="smtp_encryption">ssl</field>
+            <field name="server">imap.zoho.com</field>
+            <field name="port">993</field>
+            <field name="type">imap</field>
+            <field name="is_ssl">True</field>
+        </record>
+
+        <record id="office365_provider" model="mail.server">
+            <field name="name">Office365</field>
+            <field name="smtp_host">smtp.office365.com</field>
+            <field name="smtp_port">25</field>
+            <field name="smtp_debug">False</field>
+            <field name="smtp_encryption">starttls</field>
+            <field name="server">outlook.office365.com</field>
+            <field name="port">993</field>
+            <field name="type">imap</field>
+            <field name="is_ssl">True</field>
+        </record>
+    </data>
+</odoo>

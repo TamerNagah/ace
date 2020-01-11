@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_users_form_simple_modif_inherit" model="ir.ui.view">
+            <field name="name">res.users.preferences.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+            <field name="arch" type="xml">
+                <field name="email" widget="email" readonly="0" position="replace">
+                    <h2>Mail Server Settings</h2>
+                    <field name="is_required_field" invisible="1"/>
+                    <field name="email" widget="email" readonly="0" required="True"/>
+                    <field name="password_preference" readonly="0" password="True"  attrs="{'required': [('is_required_field','=',True)]}"/>
+                    <field name="provider_id" readonly="0"  attrs="{'required': [('is_required_field','=',True)]}"  options="{'no_create': True, 'no_open': True}" />
+                    <field name="mail_server_id" invisible="1" />
+                    <field name="incoming_server_id" invisible="1" />
+                    <button name="test_connection" type="object" string="Test Email" icon="fa-television" context="{'preference_user':1}"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_users_form_mail_inherit" model="ir.ui.view">
+            <field name="name">res.users.view.form.mail</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="mail.view_users_form_mail"/>
+            <field name="arch" type="xml">
+                <field name="notification_type" position="after">
+                    <field name="is_required_field" invisible="1"/>
+                    <field name="email" widget="email" readonly="0" required="True"/>
+                    <field name="password_preference" password="True" attrs="{'required': [('is_required_field','=',True)]}"/>
+                    <field name="mail_server_id" invisible="1"/>
+                    <field name="provider_id" readonly="0" attrs="{'required': [('is_required_field','=',True)]}"  options="{'no_create': True, 'no_open': True}"/>
+                    <field name="incoming_server_id" invisible="1"/>
+                    <button name="test_connection" type="object" string="Test Email" icon="fa-television"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ir_mail_server_form_inherit">
+            <field name="model">ir.mail_server</field>
+            <field name="inherit_id" ref="base.ir_mail_server_form"/>
+            <field name="arch" type="xml">
+                <field name="smtp_debug" position="after">
+                    <field name="user_id" invisible="1"/>
+                </field>
+                <field name="smtp_host" position="before">
+                    <field name="mail_server_id" required="True"/>
+                </field>
+                <field name="smtp_debug" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="smtp_host" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="smtp_port" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="smtp_encryption" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+
+        <record id="base.action_res_users_my" model="ir.actions.act_window">
+            <field name="context">{'preference_user':1}</field>
+        </record>
+
+    </data>
+</odoo>

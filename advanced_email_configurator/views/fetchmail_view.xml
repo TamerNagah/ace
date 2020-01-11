@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_fethmail_bydate_form">
+        <field name="name">fetchmail.bydate.form</field>
+        <field name="model">fetchmail.server</field>
+        <field name="priority" eval="1"/>
+        <field name="inherit_id" ref="fetchmail.view_email_server_form"/>
+        <field name="arch" type="xml">
+            <field name="date" position="before">
+                <field name="last_internal_date"/>
+                <field name="user_id"/>
+            </field>
+            <field name="server" position="before">
+                <field name="mail_server_id"/>
+            </field>
+            <field name="date" position="attributes" >
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>
